@@ -3,6 +3,8 @@
   events: (),
   paper: "a4",
 ) = {
+  assert(initial-date.weekday() == 1, message: "Expected the initial date to be a Monday.")
+
   set text(font: "IBM Plex Mono", size: 10pt)
 
   let min-h = 6

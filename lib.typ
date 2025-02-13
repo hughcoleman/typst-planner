@@ -71,17 +71,20 @@
               if (r0 == 0 and r == 0) or (r0 == max-h - min-h and r == 1) {
                 ([],)
               } else if (r == 1 and (event == none or event.from == hour)) {
-                let rowspan = if event == none { 2 } else {
-                  2 * (event.to - event.from)
-                }
                 let label = if event == none { "" } else {
                   event.name
+                }
+                let fill = if event == none { none } else {
+                  event.at("colour", default: rgb("#dfdfdf"))
+                }
+                let rowspan = if event == none { 2 } else {
+                  2 * (event.to - event.from)
                 }
 
                 (
                   table.cell(
                     text(size: 8pt, fill: rgb("#444444"))[#label],
-                    fill: if event == none { none } else { rgb("#dfdfdf") },
+                    fill: fill,
                     stroke: (
                       top: stroke(paint: rgb("#cccccc"), thickness: 0.5pt, dash: "dashed"),
                       bottom: stroke(paint: rgb("#cccccc"), thickness: 0.5pt, dash: "dashed")
